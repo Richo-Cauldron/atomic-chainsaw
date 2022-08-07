@@ -6,6 +6,8 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\HelperFunctions\StringToCamelCase;
 
+use App\Models\Clothing;
+
 class AddProductWizard extends Component
 {
     use WithFileUploads;
@@ -140,11 +142,25 @@ class AddProductWizard extends Component
 
     public function submitForm()
     {
-        $this->product_model::create([
-            'name' => $this->name,
-            'price' => $this->price,
-            'detail' => $this->detail,
-        ]);
+        if ($this->product_model === "Clothing") {
+            Clothing::create([
+                'brand' => $this->product_brand,
+                'brand_type' => $this->product_brand_type,
+                'value_min' => $this->product_valued_minimum,
+                'value_max' => $this->product_valued_maximum,
+                'sale_price' => $this->product_ticketed_sale_price,
+                'details' => $this->product_details,
+                'reference' => $this->product_search_reference,
+                'image_title' => $this->product_image_title,
+                'image_path' => $this->product_new_image_file_path
+            ]);
+        }
+        // dd($this->product_model);
+        // $this->product_model::create([
+        //     'name' => $this->name,
+        //     'price' => $this->price,
+        //     'detail' => $this->detail,,
+        // ]);
   
         $this->successMsg = 'Product successfully created.';
   

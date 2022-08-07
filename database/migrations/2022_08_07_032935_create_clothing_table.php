@@ -22,7 +22,7 @@ return new class extends Migration
             $table->smallInteger('sale_price')->unsigned();
             $table->tinyText('details');
             $table->tinyText('reference');
-            $table->string('image_title');
+            $table->string('image_title')->nullable();
             $table->string('image_path');            
             $table->timestamps();
         });
