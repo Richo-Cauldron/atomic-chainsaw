@@ -1,7 +1,7 @@
 <div>
     <h1 class="text-4xl text-center mb-4">Add Product Wizard</h1>
     @if(!empty($successMsg))  
-        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-8/home/orchard/Code/ssw841/app/Console00" role="alert">
             <span class="font-medium">{{ $successMsg }}</span> 
         </div>
     @endif 
@@ -36,7 +36,7 @@
         <p class="text-3xl font-semi-bold mb-6">Product Research: Type</p>
         <div class="mb-3">
             <x-label for="product_model">Product Type:</x-label>
-            <select wire:model="product_model" class="w-full rounded-md shadow border-gray-300 focus:border-blue-300  focus:ring-blue-200 focus:ring-opacity-50 focus:ring-1" id="prodproduct_modeluct_department">
+            <select wire:model="product_model" class="w-full rounded-md shadow border-gray-300 focus:border-blue-300  focus:ring-blue-200 focus:ring-opacity-50 focus:ring-1" id="product_model">
                 <option>Select Type</option>
                 @foreach($product_departments as $model)
                     <option value="{{ $model }}">{{ $model }}</option>
@@ -51,8 +51,16 @@
         </div>
         <div class="mb-3">
             <x-label for="product_brand_type">Product Brand Type:</x-label>
-            <x-input type="text" wire:model="product_brand_type" class="w-full text-gray-700 focus:shadow-outline focus:ring-1" id="product_brand_type" />
-            @error('product_brand_type') <span class="error text-red-500">*{{ $message }}</span> @enderror
+            <select wire:model="product_brand_type" class="w-full rounded-md shadow border-gray-300 focus:border-blue-300  focus:ring-blue-200 focus:ring-opacity-50 focus:ring-1" id="product_brand_type">
+                <option>Select Type</option>
+                @foreach($product_types as $type)
+                    <option value="{{ $type }}">{{ $type }}</option>
+                @endforeach
+            </select>
+            @error('product_model') <span class="error text-red-500">*{{ $message }}</span> @enderror
+
+            <!-- <x-input type="text" wire:model="product_brand_type" class="w-full text-gray-700 focus:shadow-outline focus:ring-1" id="product_brand_type" />
+            @error('product_brand_type') <span class="error text-red-500">*{{ $message }}</span> @enderror -->
         </div>
         <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none  dark:focus:ring-blue-800" wire:click="firstStepSubmit" type="button">Next</button>
     </div>
@@ -188,6 +196,10 @@
                 <tr>
                     <td>Product Search Reference:</td>
                     <td><strong>{{$product_search_reference}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Product Image Title:</td>
+                    <td><strong>{{$product_image_title}}</strong></td>
                 </tr>
                 <tr>
                     <td>Product Image File:</td>
