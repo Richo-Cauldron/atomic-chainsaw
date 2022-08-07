@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('brand_type');
             $table->smallInteger('value_min')->unsigned()->nullable();
             $table->smallInteger('value_max')->unsigned()->nullable();
-            $table->smallInteger('sale_price')->unsigned()->nullable();
+            $table->smallInteger('sale_price')->unsigned();
             $table->tinyText('details');
             $table->tinyText('reference');
             $table->string('image_title');
