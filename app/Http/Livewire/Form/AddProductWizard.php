@@ -12,7 +12,7 @@ class AddProductWizard extends Component
 
     public $currentStep = 1;
 
-    public $product_department, $product_brand, $product_brand_type, $product_title, $product_valued_minimum, $product_valued_maximum, $product_ticketed_sale_price,$product_details, $product_search_reference, $product_image_title, $product_image_file_path, $product_new_image_file_path = "";
+    public $product_model, $product_brand, $product_brand_type, $product_title, $product_valued_minimum, $product_valued_maximum, $product_ticketed_sale_price,$product_details, $product_search_reference, $product_image_title, $product_image_file_path, $product_new_image_file_path = "";
 
     public $product_departments = [
         'Clothing',
@@ -38,7 +38,7 @@ class AddProductWizard extends Component
     {
 
         $validatedData = $this->validate([
-            'product_department' => 'required',
+            'product_model' => 'required',
             'product_brand' => 'required',
             'product_brand_type' => 'required'
         ]);
@@ -100,7 +100,7 @@ class AddProductWizard extends Component
 
     public function submitForm()
     {
-        Product::create([
+        $this->product_model::create([
             'name' => $this->name,
             'price' => $this->price,
             'detail' => $this->detail,

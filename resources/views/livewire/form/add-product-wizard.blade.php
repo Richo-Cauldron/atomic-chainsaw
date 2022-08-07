@@ -35,14 +35,14 @@
     <div class=" {{ $currentStep != 1 ? 'hidden' : '' }}" id="step-1">
         <p class="text-3xl font-semi-bold mb-6">Product Research: Type</p>
         <div class="mb-3">
-            <x-label for="product_department">Product Type:</x-label>
-            <select wire:model="product_department" class="w-full rounded-md shadow border-gray-300 focus:border-blue-300  focus:ring-blue-200 focus:ring-opacity-50 focus:ring-1" id="product_department">
+            <x-label for="product_model">Product Type:</x-label>
+            <select wire:model="product_model" class="w-full rounded-md shadow border-gray-300 focus:border-blue-300  focus:ring-blue-200 focus:ring-opacity-50 focus:ring-1" id="prodproduct_modeluct_department">
                 <option>Select Type</option>
-                @foreach($product_departments as $department)
-                    <option value="{{ $department }}">{{ $department }}</option>
+                @foreach($product_departments as $model)
+                    <option value="{{ $model }}">{{ $model }}</option>
                 @endforeach
             </select>
-            @error('product_department') <span class="error text-red-500">*{{ $message }}</span> @enderror
+            @error('product_model') <span class="error text-red-500">*{{ $message }}</span> @enderror
         </div>
         <div class="mb-3">
             <x-label for="product_brand">Product Brand:</x-label>
@@ -159,7 +159,7 @@
             <table class="table">
                 <tr>
                     <td>Product Department:</td>
-                    <td class="text-center"><strong>{{$product_department}}</strong></td>
+                    <td class="text-center"><strong>{{$product_model}}</strong></td>
                 </tr>
                 <tr>
                     <td>Product Brand:</td>

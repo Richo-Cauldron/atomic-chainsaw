@@ -15,4 +15,3 @@
         </div>
     </div>
 </x-app-layout>
-<!-- resources/views/livewire/form/add-product-wizard.blade.php -->
