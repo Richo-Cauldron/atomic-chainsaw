@@ -32,8 +32,8 @@
     </div>
 
     <!-- Wizard Step 1 - Product Type -->
-    <!-- <div class=" {{ $currentStep != 1 ? 'hidden' : '' }}" id="step-1">
-        <p class="text-3xl font-semi-bold mb-6">Product Research Results</p>
+    <div class=" {{ $currentStep != 1 ? 'hidden' : '' }}" id="step-1">
+        <p class="text-3xl font-semi-bold mb-6">Product Research: Type</p>
         <div class="mb-3">
             <x-label for="product_department">Product Type:</x-label>
             <select wire:model="product_department" class="w-full rounded-md shadow border-gray-300 focus:border-blue-300  focus:ring-blue-200 focus:ring-opacity-50 focus:ring-1" id="product_department">
@@ -55,11 +55,12 @@
             @error('product_brand_type') <span class="error text-red-500">*{{ $message }}</span> @enderror
         </div>
         <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none  dark:focus:ring-blue-800" wire:click="firstStepSubmit" type="button">Next</button>
-    </div> -->
+    </div>
 
 
     <!-- Wizard Step 2 - Product Value -->
-    <!-- <div class=" {{ $currentStep != 2 ? 'hidden' : '' }}" id="step-2">
+    <div class=" {{ $currentStep != 2 ? 'hidden' : '' }}" id="step-2">
+        <p class="text-3xl font-semi-bold mb-6">Product Research: Value</p>
         <div class="mb-3">
             <x-label for="product_valued_minimum">Product Valued Minimum Price:</x-label>
             <div class="flex">
@@ -86,13 +87,13 @@
         </div>
         <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none  dark:focus:ring-blue-800" wire:click="secondStepSubmit" type="button">Next</button>
         <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-8 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button" wire:click="back(1)">Back</button>
-    </div> -->
+    </div>
 
 
     <!-- Wizard Step 3 - Product Details & Search Reference-->
-    <!-- <div class="row setup-content {{ $currentStep != 3 ? 'hidden' : '' }}" id="step-3">
+    <div class="row setup-content {{ $currentStep != 3 ? 'hidden' : '' }}" id="step-3">
+        <p class="text-3xl font-semi-bold mb-6">Product Research: Details/Reference</p>
         <div class="col-md-12">
-            <p class="text-3xl font-semi-bold my-6"> Step 3</p>
             <div class="mb-4">
                 <label class="block text-gray-700 text-smdm font-semi-bold mb-2" for="product_details">Product Details:</label>
                 <x-textarea wire:model="product_details" id="product_details">
@@ -106,14 +107,14 @@
             </div>
             <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none  dark:focus:ring-blue-800" type="button"
                 wire:click="thirdStepSubmit">Next</button>
-            <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-8 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button" wire:click="back(1)">Back</button>
+            <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-8 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button" wire:click="back(2)">Back</button>
         </div>
-    </div> -->
+    </div>
 
 
     <!-- Wizard Step 4 - Product Image -->
-    <!-- <div class="{{ $currentStep != 4 ? 'hidden' : '' }}" id="step-4"> -->
-    <div>
+    <div class="{{ $currentStep != 4 ? 'hidden' : '' }}" id="step-4">
+        <p class="text-3xl font-semi-bold mb-6">Product Research: Image</p>
         <form wire:submit.prevent="fourthStepSubmit">
             <div class="mb-3">
                 <x-label for="product_image_title">Image Title:</x-label>
@@ -145,7 +146,7 @@
             </div> 
             <div class="">
                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none  dark:focus:ring-blue-800" type="button" wire:click="fourthStepSubmit">Next</button>
-                <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-8 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button" wire:click="back(1)">Back</button>
+                <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-8 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button" wire:click="back(3)">Back</button>
             </div>
         </form>
     </div>
@@ -153,10 +154,9 @@
 
     <!-- Wizard Step 5 - Product Save -->
     <div class="{{ $currentStep != 5 ? 'hidden' : '' }}" id="step-5">
+    <p class="text-3xl font-semi-bold mb-6">Product Research: Save</p>
         <div class="col-md-12">
-        <p class="text-3xl font-semi-bold my-6"> Step 3</p>
             <table class="table">
-                
                 <tr>
                     <td>Product Department:</td>
                     <td class="text-center"><strong>{{$product_department}}</strong></td>
@@ -191,12 +191,12 @@
                 </tr>
                 <tr>
                     <td>Product Image File:</td>
-                    <td><strong>imageFile.jpg</strong></td>
+                    <td><strong>{{$product_new_image_file_path}}</strong></td>
                 </tr>
 
             </table>
             <button class="text-white bg-blgreenue-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none  dark:focus:ring-green-800" wire:click="submitForm" type="button">Finish!</button>
-            <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-8 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button" wire:click="back(2)">Back</button>
+            <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-8 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button" wire:click="back(4)">Back</button>
         </div>
     </div> 
 <!-- EOF -->

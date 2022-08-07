@@ -12,7 +12,7 @@ class AddProductWizard extends Component
 
     public $currentStep = 1;
 
-    public $product_department, $product_brand, $product_brand_type, $product_title, $product_valued_minimum, $product_valued_maximum, $product_ticketed_sale_price,$product_details, $product_search_reference, $product_image_title, $product_image_file_path= "";
+    public $product_department, $product_brand, $product_brand_type, $product_title, $product_valued_minimum, $product_valued_maximum, $product_ticketed_sale_price,$product_details, $product_search_reference, $product_image_title, $product_image_file_path, $product_new_image_file_path = "";
 
     public $product_departments = [
         'Clothing',
@@ -71,17 +71,14 @@ class AddProductWizard extends Component
     public function fourthStepSubmit()
     {
         $validatedData = $this->validate([
-            'product_image_title' => 'required_with:product_image_file_path',
-            'product_image_file_path' => 'image|required_with:product_image_title|mimes:jpg,jpeg,png|max:5048'
+            'product_image_title' => 'nullable|required_with:product_image_file_path',
+            'product_image_file_path' => 'nullable|required_with:product_image_title|mimes:jpg,jpeg,png|max:5048'
         ]);
         // dd($validatedData);
 
         if ($this->product_image_title == null && $this->product_image_file_path == null) {
-            $this->product_image_file_path = 'no-image-icon.png';
-            $this->product_image_title = 'noImage';
-            
-            $newImageFilePath = $this->product_image_file_path->storeAs('images', $this->product_image_file_path, 'public');
-            //  dd($newImageFilePath);
+            $this->product_new_image_file_path = "noImage.jpg";
+            $this->currentStep = 5;
         } else {
             $camelCase = new StringToCamelCase();
             $newImageTitle = $camelCase->camelCase($this->product_image_title);
@@ -90,13 +87,13 @@ class AddProductWizard extends Component
             $extension = pathinfo($imagePath, PATHINFO_EXTENSION);
             // dd($imagePath);
             // dd($extension);
-            $newImageFilePath = date('d-m-y') . '-' . $newImageTitle . '.' . $extension;
+            $this->product_new_image_file_path = date('d-m-y') . '-' . $newImageTitle . '.' . $extension;
             // dd($newImageFilePath);
-        }
-        // dd($newImageFilePath);
-        $this->product_image_file_path->storeAs('images', $newImageFilePath, 'public');
+            $this->product_image_file_path->storeAs('images', $this->product_new_image_file_path, 'public');
 
-        $this->currentStep = 5;
+            $this->currentStep = 5;
+        }
+        
     }
 
 
